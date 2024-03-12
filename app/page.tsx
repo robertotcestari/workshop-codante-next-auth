@@ -14,7 +14,7 @@ export default function Home() {
       </header>
 
       <section className="flex flex-wrap items-center justify-center gap-4">
-      <Link
+        <Link
           href="/dashboard"
           className={cn(
             buttonVariants({ variant: 'outline', size: 'lg' }),
@@ -23,33 +23,18 @@ export default function Home() {
         >
           Dashboard
         </Link>
-        <Link
-          href="#"
-          className={cn(
-            buttonVariants({ variant: 'default', size: 'lg' }),
-            'font-bold'
-          )}
-        >
+        <Link href="#" className={cn(buttonVariants())}>
           Login Simples
         </Link>
-        <Link
-          href="/login"
-          className={cn(buttonVariants({ variant: 'default' }))}
-        >
+        <Link href="/login" className={cn(buttonVariants())}>
           Login - Server Components
         </Link>
-        <Link
-          href="/login"
-          className={cn(buttonVariants({ variant: 'default' }))}
-        >
+        <Link href="/login" className={cn(buttonVariants())}>
           Login - Client Components
         </Link>
         <Link
           href="#"
-          className={cn(
-            buttonVariants({ variant: 'default' }),
-            'flex items-center gap-3'
-          )}
+          className={cn(buttonVariants(), 'flex items-center gap-3')}
         >
           <SiGithub className="w-4 h-4" />
           Login com Github
