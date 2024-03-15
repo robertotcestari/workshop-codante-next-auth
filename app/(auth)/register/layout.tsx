@@ -1,11 +1,4 @@
-import Link from 'next/link';
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { redirect } from 'next/navigation';
-
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-
-export default async function LoginPage({
+export default async function RegisterLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -1,7 +1,4 @@
-import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { redirect } from 'next/navigation';
 import {
   Card,
   CardContent,
@@ -10,9 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
-export default async function LoginPage({
+export default async function LoginLayout({
   children,
 }: {
   children: React.ReactNode;
