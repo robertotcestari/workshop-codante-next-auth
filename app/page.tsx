@@ -24,7 +24,7 @@ export default function Home() {
         >
           Dashboard
         </Link>
-        <Link href="#" className={cn(buttonVariants())}>
+        <Link href="/api/auth/signin" className={cn(buttonVariants())}>
           Login Simples
         </Link>
         <Link href="/login-server" className={cn(buttonVariants())}>
