@@ -17,8 +17,8 @@ export function UserIcon(props: SVGProps<SVGSVGElement>) {
         ></path>
         <path
           stroke="currentColor"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinejoin="round"
+          strokeWidth="2"
           d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"
         ></path>
         <circle
@@ -26,7 +26,7 @@ export function UserIcon(props: SVGProps<SVGSVGElement>) {
           cy="7"
           r="3"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
         ></circle>
       </g>
     </svg>
