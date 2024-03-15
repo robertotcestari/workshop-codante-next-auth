@@ -58,7 +58,7 @@ export default function RegisterForm() {
               </div>
             </div>
             <Button size={'lg'} type="submit" className="w-full mt-10 ">
-              Login
+              Registrar
             </Button>
           </form>
         </CardContent>
