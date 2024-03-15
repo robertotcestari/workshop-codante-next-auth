@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import { UserIcon } from '../_components/user-icon';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import register from '../_actions/register';
 
 export default function RegisterForm() {
   return (
@@ -27,7 +28,7 @@ export default function RegisterForm() {
           <CardDescription>Crie uma conta gratuitamente</CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="text-left ">
+          <form action={register} className="text-left ">
             <div className="space-y-6">
               <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="name">Nome</Label>
