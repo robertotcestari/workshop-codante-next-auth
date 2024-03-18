@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import login from '../_actions/login';
 
 export default function LoginForm() {
   return (
@@ -23,7 +24,7 @@ export default function LoginForm() {
       </CardHeader>
       <CardContent>
         {' '}
-        <form className="text-left ">
+        <form className="text-left " method="post" action={login}>
           <div className="space-y-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="email">Email</Label>
