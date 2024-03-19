@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import login from '../_actions/login';
+import { useState } from 'react';
 
 export default function LoginForm() {
   return (
@@ -23,8 +23,7 @@ export default function LoginForm() {
         <CardDescription>Entre com email e senha</CardDescription>
       </CardHeader>
       <CardContent>
-        {' '}
-        <form className="text-left " action={login}>
+        <form className="text-left ">
           <div className="space-y-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="email">Email</Label>
