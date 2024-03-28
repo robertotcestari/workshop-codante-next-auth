@@ -1,8 +1,10 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { compareSync } from "bcrypt-ts";
+import { compareSync } from 'bcrypt-ts';
 import db from './lib/db';
 import GithubProvider from 'next-auth/providers/github';
+import EmailProvider from 'next-auth/providers/nodemailer';
+import { PrismaAdapter } from "@auth/prisma-adapter"
 
 
 export const {
@@ -10,7 +12,22 @@ export const {
   signIn,
   auth,
 } = NextAuth({
+  adapter: PrismaAdapter(db),
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
     GithubProvider({}),
     Credentials({
       credentials: {
@@ -22,21 +39,20 @@ export const {
         password: { label: 'Senha', type: 'password' },
       },
       async authorize(credentials) {
-
         const email = credentials.email as string;
         const password = credentials.password as string;
 
-        if(!email || !password) {
+        if (!email || !password) {
           return null;
         }
 
         const user = await db.user.findUnique({
           where: {
             email: email,
-          }
-        })
+          },
+        });
 
-        if(!user) {
+        if (!user) {
           return null;
         }
 
