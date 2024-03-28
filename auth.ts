@@ -4,12 +4,12 @@ import { compareSync } from 'bcrypt-ts';
 import db from './lib/db';
 import GithubProvider from 'next-auth/providers/github';
 import EmailProvider from 'next-auth/providers/nodemailer';
-import { PrismaAdapter } from "@auth/prisma-adapter"
-
+import { PrismaAdapter } from '@auth/prisma-adapter';
 
 export const {
   handlers: { GET, POST },
   signIn,
+  signOut,
   auth,
 } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -28,7 +28,7 @@ export const {
       },
       from: process.env.EMAIL_FROM,
     }),
-    GithubProvider({}),
+    GithubProvider({ allowDangerousEmailAccountLinking: true }),
     Credentials({
       credentials: {
         email: {
