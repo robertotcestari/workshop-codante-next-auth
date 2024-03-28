@@ -1,10 +1,18 @@
-import NextAuth from 'next-auth';
+import NextAuth, { User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { compareSync } from 'bcrypt-ts';
 import db from './lib/db';
 import GithubProvider from 'next-auth/providers/github';
 import EmailProvider from 'next-auth/providers/nodemailer';
 import { PrismaAdapter } from '@auth/prisma-adapter';
+
+declare module 'next-auth' {
+  interface Session {
+    user: User & {
+      githubProfile?: any;
+    };
+  }
+}
 
 export const {
   handlers: { GET, POST },
@@ -65,4 +73,14 @@ export const {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, profile }) {
+      return { githubProfile: profile, ...token };
+    },
+
+    async session({ session, token }) {
+      session.user.githubProfile = token.githubProfile;
+      return session;
+    },
+  },
 });

@@ -7,12 +7,12 @@ import logout from '../(auth)/_actions/logout';
 import { redirect } from 'next/navigation';
 
 export default async function Dashboard() {
-  let user: User | undefined = undefined;
+  let user = undefined;
   const session = await auth();
   if (session) {
     user = session.user;
   } else {
-    return redirect('/login')
+    return redirect('/login');
   }
 
   return (
@@ -25,10 +25,15 @@ export default async function Dashboard() {
           Boas vindas - {user?.name ?? ''}
         </h3>
         <p className="text-xs text-muted-foreground">
-          User Email: {user?.email ?? ''}
+          User Email: {user?.email ?? '-'}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Username: {user?.githubProfile.login ?? '-'}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Bio: {user?.githubProfile.bio ?? '-'}
         </p>
         <hr className="w-1/4 mx-auto mt-5 mb-16" />
-
         <section className="flex flex-wrap items-center justify-center gap-3">
           <form action={logout}>
             <Button>Logout</Button>

@@ -17,7 +17,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  Account       Account[]
+  accounts      Account[]
 }
 
 model VerificationToken {
